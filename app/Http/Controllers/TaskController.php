@@ -19,6 +19,8 @@ class TaskController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|unique:tasks',
             'description' => 'required',
+            'status' => 'required|in:A faire,En cours,Terminé',
+
         ]);
 
         Task::create($validatedData);

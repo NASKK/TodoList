@@ -14,19 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');
-Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store');
-Route::get('/tasks/{task}/edit', [TaskController::class, 'edit'])->name('tasks.edit');
-Route::put('/tasks/{task}', [TaskController::class, 'update'])->name('tasks.update');
-Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy');
+
+Route::get('/', [TaskController::class, 'index'])->middleware(['auth', 'verified'])->name('tasks.index');
+Route::get('/taches', [TaskController::class, 'index'])->middleware(['auth', 'verified'])->name('tasks.index');
+Route::post('/taches', [TaskController::class, 'store'])->middleware(['auth', 'verified'])->name('tasks.store');
+Route::get('/taches/{task}/edit', [TaskController::class, 'edit'])->middleware(['auth', 'verified'])->name('tasks.edit');
+Route::put('/taches/{task}', [TaskController::class, 'update'])->middleware(['auth', 'verified'])->name('tasks.update');
+Route::delete('/taches/{task}', [TaskController::class, 'destroy'])->middleware(['auth', 'verified'])->name('tasks.destroy');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

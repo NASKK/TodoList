@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users');            
             $table->string('name');
             $table->text('description')->nullable();
+            $table->enum('status', ['A faire', 'En cours', 'Terminé'])->default('A faire');
         });
     }
 
