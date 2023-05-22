@@ -38,6 +38,8 @@ class TaskController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|unique:tasks,name,' . $task->id,
             'description' => 'required',
+            'status' => 'required',
+
         ]);
 
         $task->update($validatedData);
