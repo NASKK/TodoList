@@ -44,4 +44,9 @@
             </x-primary-button>
         </div>
     </form>
+    <div class="flex items-center justify-end mt-4">
+        <a href="{{ route('register') }}" class="underline text-sm text-gray-600 dark:text-black hover:text-gray-900 dark:hover:text-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">
+            {{ __('Pas encore inscrit ?') }}
+        </a>
+    </div>
 </x-guest-layout>
