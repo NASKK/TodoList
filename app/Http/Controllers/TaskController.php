@@ -22,6 +22,7 @@ class TaskController extends Controller
             'status' => 'required|in:A faire,En cours,Terminé',
 
         ]);
+        
 
         Task::create($validatedData);
 
@@ -53,3 +54,4 @@ class TaskController extends Controller
         return redirect()->route('tasks.index')->with('success', 'La tâche a été supprimée avec succès.');
     }
 }
+
