@@ -9,7 +9,8 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = Task::all();
+        $user = auth()->user();         
+        $tasks = $user->tasks;
 
         return view('tasks.index', compact('tasks'));
     }
@@ -24,7 +25,13 @@ class TaskController extends Controller
         ]);
         
 
-        Task::create($validatedData);
+        $task = Task::create([
+            'name' => $validatedData['name'],
+            'user_id' => auth()->user()->id,
+            'status' => $validatedData['status'],
+            'description' => $validatedData['description'],
+
+        ]);
 
         return redirect()->route('tasks.index')->with('success', 'La tâche a été ajoutée avec succès.');
     }

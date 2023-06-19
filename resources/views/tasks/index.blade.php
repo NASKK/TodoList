@@ -89,11 +89,10 @@
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </button>
                                             </form>
-                                            <form method="POST" action="{{ route('tasks.destroy', $task) }}"
-                                                class="inline">
+                                            <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" class="inline-block ml-3">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="button"
+                                                <button type="submit"
                                                     class="w-10 h-10 bg-white hover:bg-gray-200 text-red-600 font-bold rounded-full transition-colors duration-300 shadow-md"
                                                     onclick="confirmDeletion('{{ $task->name }}', '{{ route('tasks.destroy', $task) }}')">
                                                     <i class="fas fa-trash-alt"></i>
